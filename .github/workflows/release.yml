@@ -1,0 +1,28 @@
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version: 1.23
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: Build
+      run: go build -o dist/filamentinventory ./main.go && cd static && npm install && npm run build && cd .. && cp -r static/dist dist/
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: filamentinventory
+        path: ./dist/

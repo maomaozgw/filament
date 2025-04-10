@@ -1,0 +1,910 @@
+basePath: /api/v1
+definitions:
+  api.ErrorResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  api.ItemResponse-model_Brand:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.Brand'
+      message:
+        type: string
+    type: object
+  api.ItemResponse-model_Color:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.Color'
+      message:
+        type: string
+    type: object
+  api.ItemResponse-model_Filament:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.Filament'
+      message:
+        type: string
+    type: object
+  api.ItemResponse-model_Type:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/model.Type'
+      message:
+        type: string
+    type: object
+  api.ItemResponse-v1_ImportData:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/v1.ImportData'
+      message:
+        type: string
+    type: object
+  api.ItemResponse-v1_metaData:
+    properties:
+      code:
+        type: integer
+      data:
+        $ref: '#/definitions/v1.metaData'
+      message:
+        type: string
+    type: object
+  api.ListResponse-model_Brand:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Brand'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.ListResponse-model_Color:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Color'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.ListResponse-model_Filament:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Filament'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.ListResponse-model_Record:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Record'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.ListResponse-model_Statistic:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Statistic'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.ListResponse-model_Type:
+    properties:
+      code:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/model.Type'
+        type: array
+      message:
+        type: string
+      pager:
+        $ref: '#/definitions/api.Pager'
+    type: object
+  api.Pager:
+    properties:
+      page:
+        type: integer
+      size:
+        type: integer
+      total:
+        type: integer
+    type: object
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  model.Brand:
+    properties:
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  model.Color:
+    properties:
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      rgba:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  model.Filament:
+    properties:
+      brand:
+        $ref: '#/definitions/model.Brand'
+      brand_id:
+        type: integer
+      color:
+        $ref: '#/definitions/model.Color'
+      color_id:
+        type: integer
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      price:
+        type: integer
+      quantity:
+        type: integer
+      type:
+        $ref: '#/definitions/model.Type'
+      type_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  model.Record:
+    properties:
+      brand:
+        $ref: '#/definitions/model.Brand'
+      brand_id:
+        type: integer
+      color:
+        $ref: '#/definitions/model.Color'
+      color_id:
+        type: integer
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      kind:
+        type: string
+      price:
+        type: integer
+      quantity:
+        type: integer
+      type:
+        $ref: '#/definitions/model.Type'
+      type_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  model.Statistic:
+    properties:
+      kind:
+        type: string
+      title:
+        type: string
+      values:
+        items:
+          $ref: '#/definitions/model.StatisticValue'
+        type: array
+    type: object
+  model.StatisticValue:
+    properties:
+      children:
+        items:
+          $ref: '#/definitions/model.StatisticValue'
+        type: array
+      name:
+        type: string
+      value:
+        type: integer
+    type: object
+  model.Type:
+    properties:
+      created_at:
+        type: string
+      deleted_at:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      major:
+        type: string
+      minor:
+        type: string
+      name:
+        description: ignore all, just generated by major-minor
+        type: string
+      updated_at:
+        type: string
+    type: object
+  v1.ImportData:
+    properties:
+      data:
+        items:
+          type: integer
+        type: array
+      kind:
+        type: string
+    type: object
+  v1.metaData:
+    properties:
+      brands:
+        items:
+          $ref: '#/definitions/model.Brand'
+        type: array
+      colors:
+        items:
+          $ref: '#/definitions/model.Color'
+        type: array
+      types:
+        items:
+          $ref: '#/definitions/model.Type'
+        type: array
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:8080
+info:
+  contact:
+    email: maomaozgw@gmail.com
+    name: MaomaoZGW
+    url: https://github.com/maomaozgw
+  description: This is a web server for 3d printer filament management.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Filament Management API
+  version: "1.0"
+paths:
+  /api/v1/imports:
+    post:
+      consumes:
+      - application/json
+      description: Create Import Request to import filament/color/brand/type
+      parameters:
+      - description: Import Data
+        in: body
+        name: import-data
+        required: true
+        schema:
+          $ref: '#/definitions/v1.ImportData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-v1_ImportData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create Import Request
+      tags:
+      - Import
+  /api/v1/meta-data/brands:
+    get:
+      consumes:
+      - application/json
+      description: List brands with filter and pagenation
+      parameters:
+      - description: Page Number
+        in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 100
+        minimum: 10
+        name: size
+        required: true
+        type: integer
+      - description: Brand Name
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Brand'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List Brand
+      tags:
+      - MetaData
+    post:
+      consumes:
+      - application/json
+      description: Create brand
+      parameters:
+      - description: Brand
+        in: body
+        name: brand
+        required: true
+        schema:
+          $ref: '#/definitions/model.Brand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Brand'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create Brand
+      tags:
+      - MetaData
+  /api/v1/meta-data/brands/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update brand
+      parameters:
+      - description: Brand ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Brand
+        in: body
+        name: brand
+        required: true
+        schema:
+          $ref: '#/definitions/model.Brand'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Brand'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update Brand
+      tags:
+      - MetaData
+  /api/v1/meta-data/colors:
+    get:
+      consumes:
+      - application/json
+      description: get all colors
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Color'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List All Colors
+      tags:
+      - MetaData
+    post:
+      consumes:
+      - application/json
+      description: Create Color
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Color'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create Color
+      tags:
+      - MetaData
+  /api/v1/meta-data/colors/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update Color only allow to update name or rgba setting
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Color'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update Color
+      tags:
+      - MetaData
+  /api/v1/meta-data/types:
+    get:
+      consumes:
+      - application/json
+      description: get types by filter
+      parameters:
+      - description: Page Number
+        in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 100
+        minimum: 10
+        name: size
+        required: true
+        type: integer
+      - description: Filament Type
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: Filament Major Type
+        in: query
+        name: major
+        type: string
+      - description: Filament Minor Type
+        in: query
+        name: minor
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Type'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List Types with filter and page
+      tags:
+      - MetaData
+    post:
+      consumes:
+      - application/json
+      description: Create type
+      parameters:
+      - description: Type
+        in: body
+        name: type
+        required: true
+        schema:
+          $ref: '#/definitions/model.Type'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Type'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Create Type
+      tags:
+      - MetaData
+  /api/v1/meta-data/types/{id}:
+    put:
+      consumes:
+      - application/json
+      description: Update type
+      parameters:
+      - description: Brand ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Type
+        in: body
+        name: type
+        required: true
+        schema:
+          $ref: '#/definitions/model.Type'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Type'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Update Type
+      tags:
+      - MetaData
+  /api/v1/warehouse/filaments:
+    get:
+      consumes:
+      - application/json
+      description: get filaments by filter
+      parameters:
+      - description: Page Number
+        in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 100
+        minimum: 10
+        name: page_size
+        required: true
+        type: integer
+      - description: Filament Brand Name
+        in: query
+        name: brand
+        required: true
+        type: string
+      - description: Filament Color Name
+        in: query
+        name: color
+        required: true
+        type: string
+      - description: Filament Type Name
+        in: query
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Filament'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List Filament with filter and pagen
+      tags:
+      - Warehouse
+    post:
+      consumes:
+      - application/json
+      description: stock in filament, add/increase filament to warehouse
+      parameters:
+      - description: Filament
+        in: body
+        name: filament
+        required: true
+        schema:
+          $ref: '#/definitions/model.Filament'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Filament'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Stock in Filament
+      tags:
+      - Warehouse
+  /api/v1/warehouse/filaments/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: stock out filament, decrease filament from warehouse
+      parameters:
+      - description: Filament ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Filament
+        in: body
+        name: filament
+        required: true
+        schema:
+          $ref: '#/definitions/model.Filament'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Filament'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Stock out Filament
+      tags:
+      - Warehouse
+    get:
+      consumes:
+      - application/json
+      description: get filament by ID
+      parameters:
+      - description: Filament ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Filament'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: Get Filament by ID
+      tags:
+      - Warehouse
+    put:
+      consumes:
+      - application/json
+      description: |-
+        Stock take Filament
+        stock take filament, update filament quantity in warehouse
+      parameters:
+      - description: Filament ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Filament
+        in: body
+        name: filament
+        required: true
+        schema:
+          $ref: '#/definitions/model.Filament'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-model_Filament'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      tags:
+      - Warehouse
+  /api/v1/warehouse/records:
+    get:
+      consumes:
+      - application/json
+      description: get records by filter
+      parameters:
+      - description: Page Number
+        in: query
+        minimum: 1
+        name: page
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 100
+        minimum: 10
+        name: page_size
+        required: true
+        type: integer
+      - description: Filament Brand Name
+        in: query
+        name: brand
+        required: true
+        type: string
+      - description: Filament Color Name
+        in: query
+        name: color
+        required: true
+        type: string
+      - description: Filament Type Name
+        in: query
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Record'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      summary: List Records with filter and page
+      tags:
+      - Warehouse
+  /v1/meta-data:
+    get:
+      consumes:
+      - application/json
+      description: Get Global Metadata, including colors, brands, and types.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ItemResponse-v1_metaData'
+      summary: Get all metadata
+      tags:
+      - MetaData
+  /v1/warehouse/statistic:
+    get:
+      consumes:
+      - application/json
+      description: Get all statistics
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ListResponse-model_Statistic'
+      summary: Get all statistics
+      tags:
+      - Warehouse
+swagger: "2.0"
