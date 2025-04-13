@@ -1,8 +1,9 @@
 package server
 
 type Option struct {
-	Addr string `mapstructure:"addr"`
-	Orm  OrmOpt `mapstructure:"store"`
+	Addr      string `mapstructure:"addr"`
+	Orm       OrmOpt `mapstructure:"store"`
+	StaticDir string `mapstructure:"static-dir"`
 }
 
 const (

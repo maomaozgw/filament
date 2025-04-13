@@ -12,11 +12,12 @@ var Cmd = &cobra.Command{
 	Short: "serve server",
 	Run: func(cmd *cobra.Command, args []string) {
 		s, err := server.NewServer(server.Option{
-			Addr: ":8080",
+			Addr:      ":8080",
+			StaticDir: "./static",
 			Orm: server.OrmOpt{
 				Type: "sqlite",
 				Sqlite: &server.SqliteOpt{
-					Path: "filament.db",
+					Path: "./db/filament.db",
 				},
 			},
 		})

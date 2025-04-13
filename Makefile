@@ -9,7 +9,7 @@ backend:
 
 frontend:
 	@echo "Building frontend..."
-	@cd static && pnpm install && pnpm run build
+	@cd static && pnpm install && pnpm run build && cp -r ./dist/ ../dist/static/
 
 clean:
 	@echo "Cleaning builds..."
@@ -18,3 +18,6 @@ clean:
 gen-api:
 	@echo "Generating API..."
 	swag init --parseDependency
+release: frontend backend
+	@echo "Releasing..."
+    

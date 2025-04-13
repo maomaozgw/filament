@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
 	v1 "github.com/maomaozgw/filament/pkg/api/v1"
 	"github.com/maomaozgw/filament/pkg/da"
@@ -43,6 +44,11 @@ func NewServer(opt Option) (*Server, error) {
 	router := gin.Default()
 	// router.Use(gin.Logger())
 	router.Use(gin.Recovery())
+	spaHandle := static.Serve("/", static.LocalFile(opt.StaticDir, true))
+	router.Use(spaHandle)
+	router.NoRoute(func(ctx *gin.Context) {
+		ctx.File(opt.StaticDir + "/index.html")
+	})
 	v1Api, err := v1.New(daFactory)
 	if err != nil {
 		return nil, errors.Wrap(err, "new v1 api failed")
